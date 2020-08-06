@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 6, 2019 7:38:27 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.Invoice" table="Invoice" schema="dbo" catalog="MyWebsite" optimistic-lock="version">
+        <id name="idInvoice" type="int">
+            <column name="IdInvoice" />
+            <generator class="native" />
+        </id>
+        <many-to-one name="customer" class="Model.Customer" lazy="false" fetch="select">
+            <column name="UserCustomer" length="20" not-null="true" />
+        </many-to-one>
+        <many-to-one name="product" class="Model.Product" lazy="false" fetch="select">
+            <column name="IdProduct" length="10" not-null="true" />
+        </many-to-one>
+        <property name="amount" type="int">
+            <column name="Amount" not-null="true" />
+        </property>
+        <property name="dateOrder" type="java.sql.Date">
+            <column name="DateOrder" />
+        </property>
+        <property name="total" type="int">
+            <column name="Total" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

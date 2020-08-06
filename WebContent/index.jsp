@@ -1,0 +1,536 @@
+<%-- 
+    Document   : index
+    Created on : Nov 7, 2019, 10:37:10 AM
+    Author     : Administrator
+--%>
+
+<%@page import="java.util.Locale"%>
+<%@page import="java.text.NumberFormat"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.util.List"%>
+<%@page import="Model.Product"%>
+<%@page import="DAO.ProductDao"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <jsp:include page="Header.jsp"/>
+      
+    </header><!--/header-->
+    
+    <section id="slider"><!--slider-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#slider-carousel" data-slide-to="1"></li>
+                            <li data-target="#slider-carousel" data-slide-to="2"></li>
+                        </ol>
+
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <div class="col-sm-6">
+                                    <h1><span>E</span>-SHOPPER</h1>
+                                    <h3>OPPO sành điệu cùng Sơn Tùng-MTP</h3>
+
+
+                                </div>
+                                <div class="col-sm-6">
+                                    <img src="images/home/st.jpg" height="100px" class="girl img-responsive" alt="" />
+                                    <!-- <img arc="images/home/pricing.png"  class="pricing" alt="" /> -->
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="col-sm-6">
+                                    <h1><span>E</span>-SHOPPER</h1>
+                                    <h3>LEE MIN HO thật đẹp trai cùng Vivo-Smart </h3>
+
+
+                                </div>
+                                <div class="col-sm-6">
+                                    <img  src="images/home/nn.jpg" class="girl img-responsive" alt="" />
+
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <div class="col-sm-6">
+                                    <h1><span>E</span>-SHOPPER</h1>
+                                    <h3>Tan chảy cùng Tóc Tiên với Oppo</h3>
+
+
+                                </div>
+                                <div class="col-sm-6">
+                                    <img src="images/home/toctien.jpg" class="girl img-responsive" alt="" />
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                        <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section> 
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="left-sidebar">
+                        <h2>Danh Mục</h2>
+                        <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
+                                            <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                                            MÁY TÍNH BẢNG
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="sportswear" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul>
+                                            <li><a href="#">Nike </a></li>
+                                            <li><a href="#">Under Armour </a></li>
+                                            <li><a href="#">Adidas </a></li>
+                                            <li><a href="#">Puma</a></li>
+                                            <li><a href="#">ASICS </a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordian" href="#mens">
+                                            <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                                            LAPTOP
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="mens" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul>
+                                            <li><a href="#">Fendi</a></li>
+                                            <li><a href="#">Guess</a></li>
+                                            <li><a href="#">Valentino</a></li>
+                                            <li><a href="#">Dior</a></li>
+                                            <li><a href="#">Versace</a></li>
+                                            <li><a href="#">Armani</a></li>
+                                            <li><a href="#">Prada</a></li>
+                                            <li><a href="#">Dolce and Gabbana</a></li>
+                                            <li><a href="#">Chanel</a></li>
+                                            <li><a href="#">Gucci</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordian" href="#womens">
+                                            <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                                            ĐIỆN THOẠI
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="womens" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul>
+                                            <li><a href="#">Fendi</a></li>
+                                            <li><a href="#">Guess</a></li>
+                                            <li><a href="#">Valentino</a></li>
+                                            <li><a href="#">Dior</a></li>
+                                            <li><a href="#">Versace</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title"><a href="#">VIVO</a></h4>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title"><a href="#">PHỤ KIỆN ĐIỆN THOẠI</a></h4>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="brands_products"><!--brands_products-->
+                            <h2>Thương Hiệu</h2>
+                            <div class="brands-name">
+                                <form action="Customer">
+                                    <ul class="nav nav-pills nav-stacked">
+                                        <li><a href="#"> <span class="pull-right">(50)</span><input style="background-color: white;border: none" type="submit" name="action" value="IPHONE"> </a></li>
+                                        <li><a href="#"> <span class="pull-right">(56)</span><input style="background-color: white;border: none" type="submit" name="action" value="XIAOMI"></a></li>
+                                        <li><a href="#"> <span class="pull-right">(27)</span><input style="background-color: white;border: none" type="submit" name="action" value="SAMSUNG"></a></li>
+                                        <li><a href="#"> <span class="pull-right">(32)</span><input style="background-color: white;border: none" type="submit" name="action" value="VIVO BOOK"></a></li>
+                                        <li><a href="#"> <span class="pull-right">(5)</span><input style="background-color: white;border: none" type="submit" name="action" value="HUAWEI"></a></li>
+                                        <li><a  href="#"> <span class="pull-right">(9)</span><input style="background-color: white;border: none" type="submit" name="action" value="BLACKBERY"></a></li>
+
+                                    </ul>
+                                </form>
+                                <div class="price-range"><!--price-range-->
+                                    <h2>Tìm Kiếm</h2>
+                                    <form action="Customer">
+                                        <div class="well text-center">
+
+                                            <input name="Search" type="text" placeholder="Nhập tên sản phẩm" >
+
+                                            <p> <b  class="pull-left">$ 0</b> <b class="pull-right">$ 600</b></p>  
+                                            <p><input type="submit"  class="btn btn-primary" name="action"  value="Search"></p> 
+                                        </div>
+                                    </form>
+                                </div><!--/price-range-->
+
+                                <div  class="shipping text-center"><!--shipping-->
+                                    <img src="images/home/chipu_2.jpeg" alt="" />
+                                </div><!--/shipping-->
+                            </div>
+                        </div >
+                    </div>
+                </div>
+                <% ProductDao dao = new ProductDao();
+                Locale localeEN = new Locale("en", "EN");
+        	    NumberFormat en = NumberFormat.getInstance(localeEN);
+        	   
+                    Product sp = new Product();
+                    out.print("<div class=\"features_items\"><!--features_items-->\n"
+                            + "					<h2 class=\"title text-center\">Sản Phẩm Hot Nhất 2019</h2>");
+
+                    List<Product> list = dao.getList();
+                    
+                    for (int i = 0; i < 6; i++) {
+                    	 String price = en.format(list.get(i).getPriceProduct());
+                        out.print("<form action = \"Customer\">");
+                       
+                        out.print(
+                                " <div style=\"float: left\"   class=\"col-sm-4\">"
+                                + "<div class=\"product-image-wrapper\">"
+                                + "<div class=\"single-products\">"
+                                + "<div class=\"productinfo text-center\">"
+                                + " <img src=\'images/home/" + list.get(i).getImageProduct() + " '/>"
+                                +"<h2> Giá: "+price+" VNĐ </h2>"
+                                + " <p>" + list.get(i).getNameProduct() + "</p>"
+                                + " <p>" + list.get(i).getDescriptionProduct() + "</p>"
+                                + " <a href=\"#\" class=\"btn btn-default add-to-cart\"><i class=\"fa fa-shopping-cart\"></i>Xem</a>"
+                                + " </div>"
+                                + "<div class=\"product-overlay\">"
+                                + "<div class=\"overlay-content\">"
+                                + "<h2> $" + price + "</h2>"
+                                + " <p>" + list.get(i).getNameProduct() + "</p>"
+                                + " <p>" + list.get(i).getDescriptionProduct() + "</p>"
+                                + " <a href=\"#\" class=\"btn btn-default add-to-cart\"><button style=\"border: none\" type=\"submit\"   value=\"View Detail\" name=\"action\"><i class=\"fa fa-shopping-cart\"></i>Xem</button></a>"
+                                + " </div>"
+                                + "</div>"
+                                + "</div>"
+                                + "<div class=\"choose\">"
+                                + "<ul class=\"nav nav-pills nav-justified\">"
+                                + " </ul>"
+                                + "</div> "
+                                + "</div> "
+                                + "</div> "
+                                + "<input type=\"hidden\" name=\"txtMasp\" value='" + list.get(i).getIdProduct() + "'>"
+                                + "<input type=\"hidden\" name=\"txtTensp\" value='" + list.get(i).getNameProduct() + "'>"
+                                + "<input type=\"hidden\" name=\"txtanh\" value='" + list.get(i).getImageProduct() + "'>"
+                                + "<input type=\"hidden\" name=\"txtsl\" value='" + list.get(i).getAmout() + "'>"
+                                + "<input type=\"hidden\" name=\"txtGhichu\" value='" + list.get(i).getDescriptionProduct() + "'>"
+                                + "<input type=\"hidden\" name=\"txtgia\" value='" + list.get(i).getPriceProduct() + "'>"
+                                + "<input type=\"hidden\" name=\"txthxs\" value='" + list.get(i).getProducer().getNameProducer() + "'>"
+                                + "<input type=\"hidden\" name=\"txtloaihh\" value='" + list.get(i).getTypeProduct().getNameProductType() + "'>"
+                        );
+
+                        out.print("</form>");
+                    }
+
+
+                %>
+
+                <div>
+                    <div class="col-sm-12">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tshirt" data-toggle="tab">Điện Thoại</a></li>
+                            <li><a href="#blazers" data-toggle="tab">Laptop</a></li>
+                            <li><a href="#sunglass" data-toggle="tab">Máy Tính Bảng</a></li>
+                            <li><a href="#kids" data-toggle="tab">Iphone</a></li>
+                            <li><a href="#poloshirt" data-toggle="tab">Sản Phẩm Khác</a></li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane fade active in" id="tshirt" >
+                            <sql:setDataSource driver="com.microsoft.sqlserver.jdbc.SQLServerDriver" url="jdbc:sqlserver://localhost:1433;databaseName=MyWebsite" user="sa" password="sa" var="con"/>
+                            <sql:query dataSource="${con}" var="rs">
+                                select idProduct,nameProduct,priceProduct,amout,imageProduct,descriptionProduct,NameProducer,NameProductType  from product join Typeproduct on product.IDProductType = Typeproduct.IdProductType
+                                join Producer on Producer.IdProducer = Product.IdProducer
+
+                                where Product.IDProductType = 'T01'
+
+
+
+
+                            </sql:query>
+                            <c:forEach var="row" items="${rs.rows}" end="3">
+                                <form action="Customer">
+                                    <div class="col-sm-3">
+                                        <div class="product-image-wrapper">
+
+
+                                            <div class="single-products">
+                                                <div class="productinfo text-center">
+
+                                                    <img src="images/home/${row.imageProduct}" alt=""/>
+                                                    <h4>Giá: <fmt:formatNumber value = "${row.priceProduct}"  type = "number"/>  VNĐ</h4>
+                                                    <p>${row.nameProduct}</p>
+
+                                                   <button type="submit" class="btn btn-fefault cart" name="action"  value="View Detail">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    Xem  
+                                                </button>
+                                                </div>
+
+                                            </div>
+                                            <input type="hidden" name="txtMasp" value="${row.idProduct}">
+                                            <input type="hidden" name="txtTensp" value="${row.nameProduct}">"
+                                            <input type="hidden" name="txtanh" value="${row.imageProduct}">
+                                            <input type="hidden" name="txtsl" value="${row.amout}">
+                                            <input type="hidden" name="txtGhichu" value="${row.descriptionProduct}">
+                                            <input type="hidden" name="txtgia" value="${row.priceProduct}">
+                                            <input type="hidden" name="txthxs" value="${row.NameProducer}">
+                                            <input type="hidden" name="txtloaihh" value="${row.NameProductType}">    
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </c:forEach>
+                        </div>
+
+                        <div class="tab-pane fade" id="blazers" >
+                            <sql:setDataSource driver="com.microsoft.sqlserver.jdbc.SQLServerDriver" url="jdbc:sqlserver://localhost:1433;databaseName=MyWebsite" user="sa" password="sa" var="con"/>
+                            <sql:query dataSource="${con}" var="rs">
+                               select idProduct,nameProduct,priceProduct,amout,imageProduct,descriptionProduct,NameProducer,NameProductType  from product join Typeproduct on product.IDProductType = Typeproduct.IdProductType
+                                join Producer on Producer.IdProducer = Product.IdProducer
+
+                                where Product.IDProductType = 'T02'
+
+
+
+
+                            </sql:query>
+                            <c:forEach var="row" items="${rs.rows}" end="3">
+
+                                     <form action="Customer">
+                                    <div class="col-sm-3">
+                                        <div class="product-image-wrapper">
+
+
+                                            <div class="single-products">
+                                                <div class="productinfo text-center">
+
+                                                    <img src="images/home/${row.imageProduct}" alt=""/>
+                                                    <h2>$${row.priceProduct}</h2>
+                                                    <p>${row.nameProduct}</p>
+
+                                                   <button type="submit" class="btn btn-fefault cart" name="action"  value="View Detail">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    Xem
+                                                </button>
+                                                </div>
+
+                                            </div>
+                                            <input type="hidden" name="txtMasp" value="${row.idProduct}">
+                                            <input type="hidden" name="txtTensp" value="${row.nameProduct}">"
+                                            <input type="hidden" name="txtanh" value="${row.imageProduct}">
+                                            <input type="hidden" name="txtsl" value="${row.amout}">
+                                            <input type="hidden" name="txtGhichu" value="${row.descriptionProduct}">
+                                            <input type="hidden" name="txtgia" value="${row.priceProduct}">
+                                            <input type="hidden" name="txthxs" value="${row.NameProducer}">
+                                            <input type="hidden" name="txtloaihh" value="${row.NameProductType}">    
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </c:forEach>
+
+
+                        </div>
+
+                        <div class="tab-pane fade" id="sunglass" >
+                            <sql:setDataSource driver="com.microsoft.sqlserver.jdbc.SQLServerDriver" url="jdbc:sqlserver://localhost:1433;databaseName=MyWebsite" user="sa" password="sa" var="con"/>
+                            <sql:query dataSource="${con}" var="rs">
+                                select idProduct,nameProduct,priceProduct,amout,imageProduct,descriptionProduct,NameProducer,NameProductType  from product join Typeproduct on product.IDProductType = Typeproduct.IdProductType
+                                join Producer on Producer.IdProducer = Product.IdProducer
+
+                                where Product.IDProductType = 'T03'
+
+
+
+
+                            </sql:query>
+                            <c:forEach var="row" items="${rs.rows}" end="3">
+
+                                              <form action="Customer">
+                                    <div class="col-sm-3">
+                                        <div class="product-image-wrapper">
+
+
+                                            <div class="single-products">
+                                                <div class="productinfo text-center">
+
+                                                    <img src="images/home/${row.imageProduct}" alt=""/>
+                                                    <h2>$${row.priceProduct}</h2>
+                                                    <p>${row.nameProduct}</p>
+
+                                                   <button type="submit" class="btn btn-fefault cart" name="action"  value="View Detail">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    Xem 
+                                                </button>
+                                                </div>
+
+                                            </div>
+                                            <input type="hidden" name="txtMasp" value="${row.idProduct}">
+                                            <input type="hidden" name="txtTensp" value="${row.nameProduct}">"
+                                            <input type="hidden" name="txtanh" value="${row.imageProduct}">
+                                            <input type="hidden" name="txtsl" value="${row.amout}">
+                                            <input type="hidden" name="txtGhichu" value="${row.descriptionProduct}">
+                                            <input type="hidden" name="txtgia" value="${row.priceProduct}">
+                                            <input type="hidden" name="txthxs" value="${row.NameProducer}">
+                                            <input type="hidden" name="txtloaihh" value="${row.NameProductType}">    
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </c:forEach>
+
+                        </div>
+
+                        <div class="tab-pane fade" id="kids" >
+                            <sql:setDataSource driver="com.microsoft.sqlserver.jdbc.SQLServerDriver" url="jdbc:sqlserver://localhost:1433;databaseName=MyWebsite" user="sa" password="sa" var="con"/>
+                            <sql:query dataSource="${con}" var="rs">
+select idProduct,nameProduct,priceProduct,amout,imageProduct,descriptionProduct,NameProducer,NameProductType  from product join Typeproduct on product.IDProductType = Typeproduct.IdProductType
+                                join Producer on Producer.IdProducer = Product.IdProducer
+where nameProduct like '%iphone%'
+
+
+
+
+                            </sql:query>
+                            <c:forEach var="row" items="${rs.rows}" end="3">
+                                                 <form action="Customer">
+                                    <div class="col-sm-3">
+                                        <div class="product-image-wrapper">
+
+
+                                            <div class="single-products">
+                                                <div class="productinfo text-center">
+
+                                                    <img src="images/home/${row.imageProduct}" alt=""/>
+                                                    <h2>$${row.priceProduct}</h2>
+                                                    <p>${row.nameProduct}</p>
+
+                                                   <button type="submit" class="btn btn-fefault cart" name="action"  value="View Detail">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    Xem
+                                                </button>
+                                                </div>
+
+                                            </div>
+                                            <input type="hidden" name="txtMasp" value="${row.idProduct}">
+                                            <input type="hidden" name="txtTensp" value="${row.nameProduct}">"
+                                            <input type="hidden" name="txtanh" value="${row.imageProduct}">
+                                            <input type="hidden" name="txtsl" value="${row.amout}">
+                                            <input type="hidden" name="txtGhichu" value="${row.descriptionProduct}">
+                                            <input type="hidden" name="txtgia" value="${row.priceProduct}">
+                                            <input type="hidden" name="txthxs" value="${row.NameProducer}">
+                                            <input type="hidden" name="txtloaihh" value="${row.NameProductType}">    
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </c:forEach>
+                        </div>
+
+                        <div class="tab-pane fade" id="poloshirt" >
+                            <sql:setDataSource driver="com.microsoft.sqlserver.jdbc.SQLServerDriver" url="jdbc:sqlserver://localhost:1433;databaseName=MyWebsite" user="sa" password="sa" var="con"/>
+                            <sql:query dataSource="${con}" var="rs">
+                                select idProduct,nameProduct,priceProduct,amout,imageProduct,descriptionProduct,NameProducer,NameProductType  from product join Typeproduct on product.IDProductType = Typeproduct.IdProductType
+                                join Producer on Producer.IdProducer = Product.IdProducer
+
+
+
+                            </sql:query>
+                            <c:forEach var="row" items="${rs.rows}" begin="2" end="5">
+                                                 <form action="Customer">
+                                    <div class="col-sm-3">
+                                        <div class="product-image-wrapper">
+
+
+                                            <div class="single-products">
+                                                <div class="productinfo text-center">
+
+                                                    <img src="images/home/${row.imageProduct}" alt=""/>
+                                                    <h2>$${row.priceProduct}</h2>
+                                                    <p>${row.nameProduct}</p>
+
+                                                   <button type="submit" class="btn btn-fefault cart" name="action"  value="View Detail">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    Xem
+                                                </button>
+                                                </div>
+
+                                            </div>
+                                            <input type="hidden" name="txtMasp" value="${row.idProduct}">
+                                            <input type="hidden" name="txtTensp" value="${row.nameProduct}">"
+                                            <input type="hidden" name="txtanh" value="${row.imageProduct}">
+                                            <input type="hidden" name="txtsl" value="${row.amout}">
+                                            <input type="hidden" name="txtGhichu" value="${row.descriptionProduct}">
+                                            <input type="hidden" name="txtgia" value="${row.priceProduct}">
+                                            <input type="hidden" name="txthxs" value="${row.NameProducer}">
+                                            <input type="hidden" name="txtloaihh" value="${row.NameProductType}">    
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </c:forEach>
+                        </div>
+
+                    </div>
+                            
+
+                </div>
+                         
+
+            </div>
+        </div>
+
+
+
+
+
+    </section>
+
+
+    <jsp:include page="Footer.jsp"/>
+</body>
+</html>

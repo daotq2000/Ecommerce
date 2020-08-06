@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 6, 2019 7:38:27 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.Customer" table="Customer" schema="dbo" catalog="MyWebsite" optimistic-lock="version">
+        <id name="userCustomer" type="string">
+            <column name="UserCustomer" length="20" />
+            <generator class="assigned" />
+        </id>
+        <property name="passwordCustomer" type="string">
+            <column name="PasswordCustomer" length="20" not-null="true" />
+        </property>
+         <property name="addressCustomer" type="string">
+            <column name="AddressCustomer" length="200" not-null="true" />
+        </property>
+        <property name="nameCustomer" type="string">
+            <column name="NameCustomer" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="Email" length="50" />
+        </property>
+        <property name="phoneNumber" type="string">
+            <column name="PhoneNumber" not-null="true" />
+        </property>
+        <property name="roleCustomer" type="java.lang.Boolean">
+            <column name="RoleCustomer" />
+        </property>
+        <set name="invoices" table="Invoice" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="UserCustomer" length="20" not-null="true" />
+            </key>
+            <one-to-many  class="Model.Invoice" />
+        </set>
+    </class>
+</hibernate-mapping>
